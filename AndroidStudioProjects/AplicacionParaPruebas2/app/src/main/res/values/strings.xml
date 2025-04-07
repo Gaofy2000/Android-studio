@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">AplicacionParaPruebas2</string>
+    <string name="texto_boton"> Holaaaaaaaaaasdmofaop</string>
+    <string-array name="spinner1">
+        <item>Francias</item>
+        <item>España</item>
+        <item>Inglaterra</item>
+    </string-array>
+</resources>

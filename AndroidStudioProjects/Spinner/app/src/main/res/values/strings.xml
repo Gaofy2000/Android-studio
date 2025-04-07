@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Spinner 1</string>
+    <string-array name="spinner1">
+        <item> </item>
+        <item>Series</item>
+        <item>Grupos musicales</item>
+        <item>Anime</item>
+    </string-array>
+    <string-array name="spinnerSeries">
+        <item>How I met  your mother</item>
+        <item>Friends</item>
+        <item>Breaking bad</item>
+    </string-array>
+    <string-array name="spinnerGrupos">
+        <item>Twenty One Pilots</item>
+        <item>Imagine Dragons</item>
+        <item>OneRepublic</item>
+    </string-array>
+    <string-array name="spinnerAnime">
+        <item>Dragon ball</item>
+        <item>One piece</item>
+        <item>Pokemon</item>
+    </string-array>
+</resources>

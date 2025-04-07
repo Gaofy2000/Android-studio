@@ -1,0 +1,15 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.AplicacionParaPruebas" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+         <item name="colorPrimary">@color/verde</item>
+        <item name="colorOnPrimary">@color/black</item>
+    </style>
+
+    <style name="Theme.AplicacionParaPruebas" parent="Base.Theme.AplicacionParaPruebas" />
+    <style name="Base.ThemePrueba" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <item name="colorPrimary">@color/verde</item>
+        <item name="colorOnPrimary">@color/black</item>
+    </style>
+</resources>
