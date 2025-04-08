@@ -1,9 +1,11 @@
 package com.example.proyectofinalmoviles
 
 import android.os.Bundle
+import androidx.activity.addCallback
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.GravityCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.FragmentManager
@@ -41,6 +43,15 @@ class MenuActivity : AppCompatActivity() {
                 }
                 true
             }
+            onBackPressedDispatcher.addCallback {
+                if (main.isDrawerOpen(GravityCompat.START)){
+                    main.closeDrawer(GravityCompat.START)
+                }
+                else{
+                    finish()
+                }
+            }
+
         }
 
     }
