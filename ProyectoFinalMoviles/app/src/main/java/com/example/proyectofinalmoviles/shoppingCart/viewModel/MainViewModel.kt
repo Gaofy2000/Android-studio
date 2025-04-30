@@ -13,9 +13,9 @@ class MainViewModel : ViewModel(){
     private val _datos= MutableLiveData<ShoppingCartProduct>(ShoppingCartProduct(null.toString(), ArrayList()))
     val datos: LiveData<ShoppingCartProduct> get()= _datos
 
-    fun devuelveSCProductos(){
+    fun devuelveSCProductos(url:String){
         viewModelScope.launch {
-            _datos.value= myEstado.recuperarSCProductos()
+            _datos.value= myEstado.recuperarSCProductos(url)
         }
     }
 }

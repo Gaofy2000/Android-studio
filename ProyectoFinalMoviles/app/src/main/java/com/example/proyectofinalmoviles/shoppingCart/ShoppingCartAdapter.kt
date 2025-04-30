@@ -19,7 +19,6 @@ class ShoppingCartAdapter (private val dataSet: ShoppingCartProduct): RecyclerVi
 
 
     override fun onBindViewHolder(holder: ShoppingCartView, position: Int) {
-        val url:String= dataSet.message!![position]
-        Glide.with(myContexto).load(url).into(holder.txtSCName)
+        holder.txtSCName.text=dataSet.message!![position].toString()
     }
 }

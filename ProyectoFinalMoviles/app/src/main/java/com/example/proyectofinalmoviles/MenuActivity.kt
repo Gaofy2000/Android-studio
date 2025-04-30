@@ -3,6 +3,7 @@ package com.example.proyectofinalmoviles
 import android.os.Bundle
 import androidx.activity.addCallback
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
@@ -12,9 +13,13 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import com.example.proyectofinalmoviles.databinding.ActivityMainBinding
 import com.example.proyectofinalmoviles.databinding.ActivityMenuBinding
+import com.example.proyectofinalmoviles.shoppingCart.ShoppingCartAdapter
+import com.example.proyectofinalmoviles.shoppingCart.viewModel.MainViewModel
 
 class MenuActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMenuBinding
+    private val myViewModel:MainViewModel by viewModels()
+    lateinit var myAdapter: ShoppingCartAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,10 +41,7 @@ class MenuActivity : AppCompatActivity() {
             toggle.syncState()
             myNavigationView.setNavigationItemSelectedListener {
                 if (it.itemId == R.id.menu_home){
-                    val myFragmentManager: FragmentManager = supportFragmentManager
-                    val myFragmentTransaction: FragmentTransaction = myFragmentManager.beginTransaction()
-                    val myFragment: WebFragment = WebFragment.newInstance("http://localhost:8000/")
-                    myFragmentTransaction.replace(R.id.myLinearL, myFragment).commit()
+                    myViewModel.devuelveSCProductos("cart")
                 }
                 true
             }

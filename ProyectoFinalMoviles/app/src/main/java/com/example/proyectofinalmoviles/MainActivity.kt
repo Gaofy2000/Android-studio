@@ -32,6 +32,7 @@ class MainActivity : AppCompatActivity() {
                 var myIntent: Intent = Intent(this@MainActivity, MenuActivity::class.java)
                 startActivity(myIntent)
             }
+
         }
     }
 }
