@@ -41,7 +41,13 @@ class MenuActivity : AppCompatActivity() {
             toggle.syncState()
             myNavigationView.setNavigationItemSelectedListener {
                 if (it.itemId == R.id.menu_home){
+                }
+                else if(it.itemId==R.id.menu_products){
+
+                }
+                else if(it.itemId==R.id.menu_cart){
                     myViewModel.devuelveSCProductos("cart")
+
                 }
                 true
             }

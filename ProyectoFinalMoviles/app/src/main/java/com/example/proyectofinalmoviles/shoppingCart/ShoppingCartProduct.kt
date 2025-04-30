@@ -1,3 +1,5 @@
 package com.example.proyectofinalmoviles.shoppingCart
 
-data class ShoppingCartProduct(val status:String, val shoppingCartProducts: List<String>?, val totalQuantity: Int, val totalCartPrice: Double)
+import com.example.proyectofinalmoviles.entities.CartProduct
+
+data class ShoppingCartProduct(val status:String, val shoppingCartProducts: List<CartProduct>?, val totalQuantity: Int, val totalCartPrice: Double)

@@ -10,7 +10,7 @@ import kotlinx.coroutines.launch
 
 class MainViewModel : ViewModel(){
     val myEstado= MainState()
-    private val _datos= MutableLiveData<ShoppingCartProduct>(ShoppingCartProduct(null.toString(), ArrayList()))
+    private val _datos= MutableLiveData<ShoppingCartProduct>(ShoppingCartProduct(null.toString(), ArrayList(), 0, 0.0))
     val datos: LiveData<ShoppingCartProduct> get()= _datos
 
     fun devuelveSCProductos(url:String){
