@@ -19,6 +19,9 @@ class ShoppingCartAdapter (private val dataSet: ShoppingCartProduct): RecyclerVi
 
 
     override fun onBindViewHolder(holder: ShoppingCartView, position: Int) {
-        holder.txtSCName.text=dataSet.shoppingCartProducts!![position].toString()
+        holder.txtSCName.text=dataSet.shoppingCartProducts!![position].name
+        holder.txtSCQuantity.text=dataSet.shoppingCartProducts!![position].quantity.toString()
+        holder.txtSCPrice.text=dataSet.shoppingCartProducts!![position].price.toString()
+        holder.txtSCTotalPrice.text=dataSet.shoppingCartProducts!![position].totalPrice.toString()
     }
 }

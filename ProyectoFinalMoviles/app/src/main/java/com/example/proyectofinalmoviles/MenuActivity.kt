@@ -1,6 +1,7 @@
 package com.example.proyectofinalmoviles
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.addCallback
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
@@ -9,16 +10,15 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentTransaction
-import com.example.proyectofinalmoviles.databinding.ActivityMainBinding
 import com.example.proyectofinalmoviles.databinding.ActivityMenuBinding
+import com.example.proyectofinalmoviles.databinding.CartViewBinding
 import com.example.proyectofinalmoviles.shoppingCart.ShoppingCartAdapter
-import com.example.proyectofinalmoviles.shoppingCart.viewModel.MainViewModel
+import com.example.proyectofinalmoviles.shoppingCart.viewModel.ShoppingCartViewModel
 
 class MenuActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMenuBinding
-    private val myViewModel:MainViewModel by viewModels()
+    private lateinit var scBindign: CartViewBinding
+    private val scViewModel:ShoppingCartViewModel by viewModels()
     lateinit var myAdapter: ShoppingCartAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,8 +46,7 @@ class MenuActivity : AppCompatActivity() {
 
                 }
                 else if(it.itemId==R.id.menu_cart){
-                    myViewModel.devuelveSCProductos("cart")
-
+                    scViewModel.devuelveSCProductos("cart")
                 }
                 true
             }
@@ -57,6 +56,15 @@ class MenuActivity : AppCompatActivity() {
                 }
                 else{
                     finish()
+                }
+            }
+            scViewModel.datos.observe(this@MenuActivity){
+                if (it.status=="success"){
+                    myAdapter= ShoppingCartAdapter(it)
+                    scBindign.rvShoppingCart.adapter=myAdapter
+                }
+                else{
+                    Toast.makeText(applicationContext, "El carrito esta vacio", Toast.LENGTH_SHORT).show()
                 }
             }
 

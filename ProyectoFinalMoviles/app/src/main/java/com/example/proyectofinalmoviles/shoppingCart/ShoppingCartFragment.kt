@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.proyectofinalmoviles.R
+import com.example.proyectofinalmoviles.shoppingCart.viewModel.ShoppingCartViewModel
 
 class ShoppingCartFragment : Fragment() {
 

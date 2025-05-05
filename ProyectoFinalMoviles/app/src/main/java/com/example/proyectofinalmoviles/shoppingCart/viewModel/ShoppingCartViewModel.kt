@@ -8,7 +8,7 @@ import com.example.proyectofinalmoviles.shoppingCart.ShoppingCartProduct
 import com.example.proyectofinalmoviles.shoppingCart.model.MainState
 import kotlinx.coroutines.launch
 
-class MainViewModel : ViewModel(){
+class ShoppingCartViewModel : ViewModel(){
     val myEstado= MainState()
     private val _datos= MutableLiveData<ShoppingCartProduct>(ShoppingCartProduct(null.toString(), ArrayList(), 0, 0.0))
     val datos: LiveData<ShoppingCartProduct> get()= _datos
