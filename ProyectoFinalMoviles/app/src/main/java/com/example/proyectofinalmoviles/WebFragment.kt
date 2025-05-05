@@ -23,7 +23,7 @@ class WebFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            url= it.getString(ARG_PARAM1)
+            url = it.getString(ARG_PARAM1)
         }
     }
 
@@ -31,8 +31,8 @@ class WebFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val myView=inflater.inflate(R.layout.fragment_web, container, false)
-        var myWebView= myView.findViewById<WebView>(R.id.web_view)
+        val myView = inflater.inflate(R.layout.fragment_web, container, false)
+        var myWebView = myView.findViewById<WebView>(R.id.web_view)
         myWebView.loadUrl(url!!)
         // Inflate the layout for this fragment
         return myView

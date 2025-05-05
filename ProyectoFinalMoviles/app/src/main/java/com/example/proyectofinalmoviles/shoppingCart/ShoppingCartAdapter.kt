@@ -4,7 +4,6 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.example.proyectofinalmoviles.R
 
 class ShoppingCartAdapter (private val dataSet: ShoppingCartProduct): RecyclerView.Adapter<ShoppingCartView>() {
