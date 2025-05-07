@@ -4,30 +4,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".shoppingCart.ShoppingCartFragment">
+    tools:context=".product.ProductFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvShoppingCart"
+        android:id="@+id/rvProducts"
         android:layout_width="match_parent"
         android:layout_height="600dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="129dp"
-        android:layout_weight="1"
-        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.996">
+        app:layout_constraintVertical_bias="1.0" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="129dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/rvProducts"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.003">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -35,40 +34,48 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/textView4"
-                android:layout_width="70dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Total de productos:" />
-
-            <TextView
-                android:id="@+id/textView5"
+                android:id="@+id/labelPSearch"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Precio total:" />
+                android:text="Busqueda" />
+
+            <TextView
+                android:id="@+id/labelPCategory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Categoria" />
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="409dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/txtTotalCartQuantity"
-                android:layout_width="wrap_content"
+            <EditText
+                android:id="@+id/txtPSearch"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="TextView" />
+                android:ems="10"
+                android:inputType="text"
+                android:textSize="14sp" />
 
-            <TextView
-                android:id="@+id/txtTotalCartPrice"
-                android:layout_width="wrap_content"
+            <Spinner
+                android:id="@+id/spinnerPCategory"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="TextView" />
-
+                android:entries="@array/spinnerCategory" />
         </LinearLayout>
+
+        <Button
+            android:id="@+id/btnPSearch"
+            android:layout_width="206dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Buscar" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

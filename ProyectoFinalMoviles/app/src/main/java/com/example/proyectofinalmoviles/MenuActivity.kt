@@ -11,6 +11,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import com.example.proyectofinalmoviles.databinding.ActivityMenuBinding
+import com.example.proyectofinalmoviles.product.ProductFragment
 import com.example.proyectofinalmoviles.shoppingCart.ShoppingCartFragment
 
 class MenuActivity : AppCompatActivity() {
@@ -27,48 +28,55 @@ class MenuActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        with(binding){
+        with(binding) {
             setSupportActionBar(myToolbar)
-            val toggle= ActionBarDrawerToggle(this@MenuActivity, main, myToolbar,
+            val toggle = ActionBarDrawerToggle(
+                this@MenuActivity, main, myToolbar,
                 R.string.navigation_drawer_open,
-                R.string.navigation_drawer_close)
+                R.string.navigation_drawer_close
+            )
             main.addDrawerListener(toggle)
             toggle.syncState()
             myNavigationView.setNavigationItemSelectedListener {
                 val myFragmentManager: FragmentManager = supportFragmentManager
-                if (it.itemId == R.id.menu_home){
-                    val myFragmentTransaction: FragmentTransaction = myFragmentManager.beginTransaction()
+                if (it.itemId == R.id.menu_home) {
+                    val myFragmentTransaction: FragmentTransaction =
+                        myFragmentManager.beginTransaction()
                     val myFragment: WebFragment = WebFragment.newInstance("http://10.0.2.2:8000/")
 
                     myFragmentTransaction
                         .replace(R.id.myLinearL, myFragment)
                         .commit()
                     main.closeDrawer(GravityCompat.START)
-                }
-                else if(it.itemId==R.id.menu_products){
-
-                }
-                else if(it.itemId==R.id.menu_cart){
-                    val myFragmentTransaction: FragmentTransaction = myFragmentManager.beginTransaction()
-                    val myFragment: ShoppingCartFragment = ShoppingCartFragment()
+                } else if (it.itemId == R.id.menu_products) {
+                    val myFragmentTransaction: FragmentTransaction =
+                        myFragmentManager.beginTransaction()
+                    val myFragment: ProductFragment = ProductFragment.newInstance()
 
                     myFragmentTransaction
                         .replace(R.id.myLinearL, myFragment)
                         .commit()
+                    main.closeDrawer(GravityCompat.START)
+
+                } else if (it.itemId == R.id.menu_cart) {
+                    val myFragmentTransaction: FragmentTransaction =
+                        myFragmentManager.beginTransaction()
+                    val myFragment: ShoppingCartFragment = ShoppingCartFragment.newInstance()
+
+                    myFragmentTransaction
+                        .replace(R.id.myLinearL, myFragment)
+                        .commit()
+                    main.closeDrawer(GravityCompat.START)
                 }
                 true
             }
             onBackPressedDispatcher.addCallback {
-                if (main.isDrawerOpen(GravityCompat.START)){
+                if (main.isDrawerOpen(GravityCompat.START)) {
                     main.closeDrawer(GravityCompat.START)
-                }
-                else{
+                } else {
                     finish()
                 }
             }
-
-
         }
-
     }
 }

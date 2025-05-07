@@ -1,9 +1,10 @@
 package com.example.proyectofinalmoviles.entities
 
-data class CartProduct(
+data class Product(
     val id: Long,
     val name: String,
-    val quantity: Int,
+    val description: String,
+    val image: String,
     val price: Double,
-    val totalPrice: Double
+    val categoryId: Int
 )

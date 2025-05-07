@@ -5,6 +5,10 @@
     <string name="menu_home">Home</string>
     <string name="menu_products">Productos</string>
     <string name="menu_cart">Mi carrito</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string-array name="spinnerCategory">
+        <item>Sin seleccion</item>
+        <item>Cartas</item>
+        <item>Sobres</item>
+        <item>Cajas</item>
+    </string-array>
 </resources>

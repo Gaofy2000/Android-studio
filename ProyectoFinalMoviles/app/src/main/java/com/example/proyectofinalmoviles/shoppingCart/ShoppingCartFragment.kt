@@ -6,18 +6,26 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.proyectofinalmoviles.R
 import com.example.proyectofinalmoviles.databinding.FragmentShoppingCartBinding
 import com.example.proyectofinalmoviles.shoppingCart.viewModel.ShoppingCartViewModel
 
 class ShoppingCartFragment : Fragment() {
 
+    companion object {
+        fun newInstance() = ShoppingCartFragment()
+    }
+
+    private val viewModel: ShoppingCartViewModel by viewModels()
     private lateinit var binding: FragmentShoppingCartBinding
     private lateinit var myAdapter: ShoppingCartAdapter
-    private val viewModel: ShoppingCartViewModel by viewModels()
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // TODO: Use the ViewModel
     }
 
     override fun onCreateView(
@@ -25,17 +33,24 @@ class ShoppingCartFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentShoppingCartBinding.inflate(inflater, container, false)
-        myAdapter = ShoppingCartAdapter(ShoppingCartProduct("No success", null, 0, 0.0))
-        viewModel.devuelveSCProductos("cart")
-        viewModel.datos.observe(viewLifecycleOwner) {
-            if (it.status == "success") {
-                myAdapter = ShoppingCartAdapter(it)
-                binding.rvShoppingCart.adapter = myAdapter
-
-            }
-        }
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        with(binding) {
+            rvShoppingCart.layoutManager = LinearLayoutManager(requireContext())
+            myAdapter = ShoppingCartAdapter(ShoppingCartProduct())
+            rvShoppingCart.adapter = myAdapter
 
+            viewModel.datos.observe(viewLifecycleOwner, Observer { shoppingCartData ->
+                txtTotalCartQuantity.text=shoppingCartData.totalCartQuantity.toString()
+                txtTotalCartPrice.text=shoppingCartData.totalCartPrice.toString()
+
+                myAdapter = ShoppingCartAdapter(shoppingCartData)
+                rvShoppingCart.adapter = myAdapter
+            })
+        }
+        viewModel.returnAllCart()
+    }
 }
