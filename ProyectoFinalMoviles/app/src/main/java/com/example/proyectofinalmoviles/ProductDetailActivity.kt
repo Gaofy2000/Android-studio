@@ -47,9 +47,18 @@ class ProductDetailActivity : AppCompatActivity() {
             txtDetailProductDescription.text = productDescription
             txtDetailProductPrice.text = productPrice.toString()
 
-            Glide.with(this@ProductDetailActivity)
-                .load(productImage)
-                .into(imgDetailProduct)
+            val BASE_URL = "http://10.0.2.2:8000"
+            val urlImage = if (productImage.isNullOrBlank()) {
+                "$BASE_URL/imgs/dedo.jpg"
+            } else {
+                if (productImage.startsWith("http")) {
+                    productImage
+                } else {
+                    "$BASE_URL$productImage"
+                }
+            }
+
+            Glide.with(this@ProductDetailActivity).load(urlImage).into(imgDetailProduct)
 
             when (productCategory) {
                 1 -> txtDetailProductCategory.text = "Carta"
