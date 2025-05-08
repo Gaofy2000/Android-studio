@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.webkit.WebView
+import android.webkit.WebViewClient
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -33,6 +34,8 @@ class WebFragment : Fragment() {
     ): View? {
         val myView = inflater.inflate(R.layout.fragment_web, container, false)
         var myWebView = myView.findViewById<WebView>(R.id.web_view)
+        myWebView.settings.javaScriptEnabled=true
+        myWebView.webViewClient= WebViewClient()
         myWebView.loadUrl(url!!)
         // Inflate the layout for this fragment
         return myView

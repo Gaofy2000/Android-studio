@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.proyectofinalmoviles.login.getAuth
 import com.example.proyectofinalmoviles.model.MainState
 import com.example.proyectofinalmoviles.shoppingCart.ShoppingCartProduct
 import kotlinx.coroutines.launch
@@ -19,17 +20,17 @@ class ShoppingCartViewModel : ViewModel() {
 
     fun returnAllCart() {
         viewModelScope.launch {
-            _datos.value = myEstado.returnAllCart()
+            _datos.value = myEstado.returnAllCart(getAuth())
         }
     }
 
     fun addProductToCart(productId: Long, quantity: Int = 1) {
         viewModelScope.launch {
             if (quantity > 1) {
-                val response = myEstado.addManyProductToCart(productId, quantity)
+                val response = myEstado.addManyProductToCart(getAuth(),  productId, quantity)
                 _addToCartResult.value = response
             } else {
-                val response = myEstado.addProductToCart(productId)
+                val response = myEstado.addProductToCart(getAuth(), productId)
                 _addToCartResult.value = response
             }
 
@@ -39,7 +40,7 @@ class ShoppingCartViewModel : ViewModel() {
     fun deleteProductFromCart(position : Int) {
         viewModelScope.launch {
             val shoppingCartProductId= _datos.value!!.shoppingCartProducts[position].id
-            val response = myEstado.deleteOneProductFromCart(shoppingCartProductId)
+            val response = myEstado.deleteOneProductFromCart(getAuth(), shoppingCartProductId)
             _deleteFromCartResult.value = response
 
         }

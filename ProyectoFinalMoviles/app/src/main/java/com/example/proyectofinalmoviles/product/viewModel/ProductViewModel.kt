@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.proyectofinalmoviles.login.getAuth
 import com.example.proyectofinalmoviles.model.MainState
 import com.example.proyectofinalmoviles.product.ResponseProduct
 import kotlinx.coroutines.launch
@@ -15,25 +16,25 @@ class ProductViewModel : ViewModel() {
 
     fun returnAllProducts(){
         viewModelScope.launch {
-            _datos.value= myEstado.returnAllProducts()
+            _datos.value= myEstado.returnAllProducts(getAuth())
         }
     }
 
     fun returnALlProductsByName(search:String){
         viewModelScope.launch {
-            _datos.value= myEstado.returnAllProductsByName(search)
+            _datos.value= myEstado.returnAllProductsByName(getAuth(), search)
         }
     }
 
     fun returnAllProductsByCategory(cat: Long){
         viewModelScope.launch {
-            _datos.value= myEstado.returnAllProductsByCategory(cat)
+            _datos.value= myEstado.returnAllProductsByCategory(getAuth(), cat)
         }
     }
 
     fun returnAllProductsByAll(search: String, cat: Long){
         viewModelScope.launch {
-            _datos.value= myEstado.returnAllProductsByAll(search, cat)
+            _datos.value= myEstado.returnAllProductsByAll(getAuth(), search, cat)
         }
     }
 }

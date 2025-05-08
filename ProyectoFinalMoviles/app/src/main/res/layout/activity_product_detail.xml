@@ -139,7 +139,7 @@
 
                 <Button
                     android:id="@+id/btnDecrement"
-                    android:layout_width="48dp"
+                    android:layout_width="60dp"
                     android:layout_height="48dp"
                     android:text="-"
                     android:textSize="18sp" />
@@ -154,7 +154,7 @@
 
                 <Button
                     android:id="@+id/btnIncrement"
-                    android:layout_width="48dp"
+                    android:layout_width="60dp"
                     android:layout_height="48dp"
                     android:text="+"
                     android:textSize="18sp" />

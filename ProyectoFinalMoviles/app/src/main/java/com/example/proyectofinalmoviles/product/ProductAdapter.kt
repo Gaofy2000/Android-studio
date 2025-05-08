@@ -23,8 +23,11 @@ class ProductAdapter(private val dataSet: ResponseProduct) : RecyclerView.Adapte
 
     override fun onBindViewHolder(holder: ProductView, position: Int) {
         val product = dataSet.content[position]
-
-        Glide.with(myContexto).load(product.image).into(holder.productImage)
+        var urlImage="http://10.0.2.2:8000/imgs/dedo.jpg"
+        if (product.image!=null){
+            urlImage="http://10.0.2.2:8000${product.image}"
+        }
+        Glide.with(myContexto).load(urlImage).into(holder.productImage)
         holder.txtPName.text = product.name
         holder.txtPPrice.text = product.price.toString()
         holder.txtPDescription.text = product.description

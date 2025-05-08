@@ -30,6 +30,8 @@ class ShoppingCartAdapter(private val dataSet: ShoppingCartProduct) : RecyclerVi
             holder.txtSCTotalPrice.text = product.totalPrice.toString()
             if(position==positionClicked){
                 holder.fondo.setBackgroundColor(android.graphics.Color.CYAN)
+            }else{
+                holder.fondo.setBackgroundColor(android.graphics.Color.WHITE)
             }
             holder.fondo.setOnClickListener{
                 notifyItemChanged(positionClicked)
@@ -38,7 +40,7 @@ class ShoppingCartAdapter(private val dataSet: ShoppingCartProduct) : RecyclerVi
             }
             holder.fondo.setOnLongClickListener {
                 positionClicked=RecyclerView.NO_POSITION
-                holder.fondo.setBackgroundColor(android.graphics.Color.TRANSPARENT)
+                holder.fondo.setBackgroundColor(android.graphics.Color.WHITE)
                 true
             }
         }
