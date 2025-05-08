@@ -38,14 +38,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Busqueda" />
+                android:text="Busqueda"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/labelPCategory"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Categoria" />
+                android:text="Categoria"
+                android:textStyle="bold" />
         </LinearLayout>
 
         <LinearLayout

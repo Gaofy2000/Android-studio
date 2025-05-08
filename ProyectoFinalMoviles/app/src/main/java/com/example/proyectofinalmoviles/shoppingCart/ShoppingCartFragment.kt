@@ -6,8 +6,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.proyectofinalmoviles.R
 import com.example.proyectofinalmoviles.databinding.FragmentShoppingCartBinding
 import com.example.proyectofinalmoviles.shoppingCart.viewModel.ShoppingCartViewModel
@@ -24,8 +26,6 @@ class ShoppingCartFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        // TODO: Use the ViewModel
     }
 
     override fun onCreateView(
@@ -43,11 +43,29 @@ class ShoppingCartFragment : Fragment() {
             myAdapter = ShoppingCartAdapter(ShoppingCartProduct())
             rvShoppingCart.adapter = myAdapter
 
+            btnDelete.setOnClickListener {
+                if (myAdapter.positionClicked != RecyclerView.NO_POSITION) {
+                    viewModel.deleteProductFromCart(myAdapter.positionClicked)
+                    myAdapter.positionClicked = RecyclerView.NO_POSITION
+                }else{
+/*
+                    Toast.makeText(this@ShoppingCartFragment, "Debes seleccionar una fila", Toast.LENGTH_LONG)
+*/
+                }
+            }
+
             viewModel.datos.observe(viewLifecycleOwner, Observer { shoppingCartData ->
                 txtTotalCartQuantity.text=shoppingCartData.totalCartQuantity.toString()
                 txtTotalCartPrice.text=shoppingCartData.totalCartPrice.toString()
 
                 myAdapter = ShoppingCartAdapter(shoppingCartData)
+                rvShoppingCart.adapter = myAdapter
+            })
+            viewModel.deleteFromCartResult.observe(viewLifecycleOwner, Observer { result ->
+                txtTotalCartQuantity.text = result.totalCartQuantity.toString()
+                txtTotalCartPrice.text = result.totalCartPrice.toString()
+
+                myAdapter = ShoppingCartAdapter(result)
                 rvShoppingCart.adapter = myAdapter
             })
         }

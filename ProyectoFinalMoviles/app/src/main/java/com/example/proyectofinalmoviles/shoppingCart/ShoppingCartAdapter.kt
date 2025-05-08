@@ -4,12 +4,13 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.graphics.toColorInt
 import androidx.recyclerview.widget.RecyclerView
 import com.example.proyectofinalmoviles.R
 
-class ShoppingCartAdapter(private val dataSet: ShoppingCartProduct) :
-    RecyclerView.Adapter<ShoppingCartView>() {
+class ShoppingCartAdapter(private val dataSet: ShoppingCartProduct) : RecyclerView.Adapter<ShoppingCartView>() {
     private lateinit var myContexto: Context
+    var positionClicked: Int =RecyclerView.NO_POSITION
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ShoppingCartView {
         myContexto = parent.context
         val view =
@@ -27,6 +28,19 @@ class ShoppingCartAdapter(private val dataSet: ShoppingCartProduct) :
             holder.txtSCQuantity.text = product.quantity.toString()
             holder.txtSCPrice.text = product.price.toString()
             holder.txtSCTotalPrice.text = product.totalPrice.toString()
+            if(position==positionClicked){
+                holder.fondo.setBackgroundColor(android.graphics.Color.CYAN)
+            }
+            holder.fondo.setOnClickListener{
+                notifyItemChanged(positionClicked)
+                positionClicked=position
+                notifyItemChanged(positionClicked)
+            }
+            holder.fondo.setOnLongClickListener {
+                positionClicked=RecyclerView.NO_POSITION
+                holder.fondo.setBackgroundColor(android.graphics.Color.TRANSPARENT)
+                true
+            }
         }
     }
 }

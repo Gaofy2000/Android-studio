@@ -42,20 +42,6 @@ class ProductDetailActivity : AppCompatActivity() {
         productPrice = intent.getDoubleExtra("product_price", 0.0)
         productCategory = intent.getIntExtra("product_category", 0)
 
-        setupUI()
-        setupListeners()
-
-        viewModel.addToCartResult.observe(this) { success ->
-            if (success) {
-                Toast.makeText(this, "Producto añadido al carrito", Toast.LENGTH_SHORT).show()
-                finish()
-            } else {
-                Toast.makeText(this, "Stock insuficiente", Toast.LENGTH_SHORT).show()
-            }
-        }
-    }
-
-    private fun setupUI() {
         with(binding) {
             txtDetailProductName.text = productName
             txtDetailProductDescription.text = productDescription
@@ -73,11 +59,7 @@ class ProductDetailActivity : AppCompatActivity() {
             }
 
             txtQuantity.text = "1"
-        }
-    }
 
-    private fun setupListeners() {
-        with(binding) {
             btnIncrement.setOnClickListener {
                 val currentQuantity = txtQuantity.text.toString().toInt()
                 txtQuantity.text = (currentQuantity + 1).toString()
@@ -99,5 +81,15 @@ class ProductDetailActivity : AppCompatActivity() {
                 finish()
             }
         }
+
+        viewModel.addToCartResult.observe(this) { result ->
+            if (result != null) {
+                Toast.makeText(this, "Producto añadido al carrito", Toast.LENGTH_SHORT).show()
+                finish()
+            } else {
+                Toast.makeText(this, "Stock insuficiente", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
+
 }
