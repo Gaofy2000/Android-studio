@@ -11,7 +11,7 @@ data class ResponseProduct(
     val totalElements: Int = 0,
     val totalPages: Int = 0,
     val size: Int = 0,
-    val number: Int = 0,
+    var number: Int = 0,
     val sort: Sort = Sort(),
     val first: Boolean = true,
     val numberOfElements: Int = 0,

@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.proyectofinalmoviles.login.getAuth
 import com.example.proyectofinalmoviles.model.MainState
+import com.example.proyectofinalmoviles.product.ResponseProduct
 import com.example.proyectofinalmoviles.shoppingCart.ShoppingCartProduct
 import kotlinx.coroutines.launch
 
@@ -45,5 +46,6 @@ class ShoppingCartViewModel : ViewModel() {
 
         }
     }
+
 
 }

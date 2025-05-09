@@ -56,6 +56,10 @@ class MainState {
         return service.getAllProductsByAll(auth, search, cat).body() ?: ResponseProduct()
     }
 
+    fun scrollProducts(responseProduct: ResponseProduct){
+        responseProduct.number += 1
+    }
+
     //Carrito
     suspend fun returnAllCart(auth: String): ShoppingCartProduct {
         val retrofit = Retrofit.Builder()

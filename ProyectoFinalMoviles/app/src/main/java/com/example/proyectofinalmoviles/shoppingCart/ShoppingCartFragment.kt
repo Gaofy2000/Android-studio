@@ -48,9 +48,7 @@ class ShoppingCartFragment : Fragment() {
                     viewModel.deleteProductFromCart(myAdapter.positionClicked)
                     myAdapter.positionClicked = RecyclerView.NO_POSITION
                 }else{
-/*
-                    Toast.makeText(this@ShoppingCartFragment, "Debes seleccionar una fila", Toast.LENGTH_LONG)
-*/
+                    Toast.makeText(requireContext(), "Debes seleccionar una fila", Toast.LENGTH_LONG)
                 }
             }
 

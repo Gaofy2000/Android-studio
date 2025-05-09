@@ -8,11 +8,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.proyectofinalmoviles.R
 import com.example.proyectofinalmoviles.databinding.FragmentProductBinding
 import com.example.proyectofinalmoviles.product.viewModel.ProductViewModel
 import com.example.proyectofinalmoviles.shoppingCart.ShoppingCartAdapter
 import com.example.proyectofinalmoviles.shoppingCart.ShoppingCartProduct
+import com.google.android.material.snackbar.Snackbar
 
 class ProductFragment : Fragment() {
 
@@ -37,7 +39,8 @@ class ProductFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         with(binding){
-            rvProducts.layoutManager = LinearLayoutManager(requireContext())
+            val mLayout=LinearLayoutManager(requireContext())
+            rvProducts.layoutManager = mLayout
             myAdapter = ProductAdapter(ResponseProduct())
             rvProducts.adapter = myAdapter
             viewModel.returnAllProducts()
@@ -59,6 +62,23 @@ class ProductFragment : Fragment() {
             viewModel.datos.observe(viewLifecycleOwner, Observer { productData ->
                 myAdapter = ProductAdapter(productData)
                 rvProducts.adapter = myAdapter
+            })
+            rvProducts.addOnScrollListener(object : RecyclerView.OnScrollListener(){
+                override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                    super.onScrolled(recyclerView, dx, dy)
+                    var finalScroll: Boolean= false
+                    if (mLayout.findLastVisibleItemPosition()%5>=4){
+
+                    }
+                    if (finalScroll){
+                        Snackbar.make(mainProducts, "Mostrar mas productos", Snackbar.LENGTH_LONG)
+                            .setAction("Cargar mas productos", View.OnClickListener {
+/*
+                                viewModel.scrollProducts()
+*/
+                            })
+                    }
+                }
             })
 
         }

@@ -37,4 +37,11 @@ class ProductViewModel : ViewModel() {
             _datos.value= myEstado.returnAllProductsByAll(getAuth(), search, cat)
         }
     }
+
+    /*fun scrollProducts(responseProduct: ResponseProduct){
+        viewModelScope.launch {
+            _datos.value = myEstado.srollProducts(responseProduct)
+        }
+    }*/
+
 }

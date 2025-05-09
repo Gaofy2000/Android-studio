@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.proyectofinalmoviles.R
 
 class ProductView (itemView: View): RecyclerView.ViewHolder(itemView) {
-    val productImage= itemView.findViewById<View>(R.id.productImage) as ImageView
+    val productImage= itemView.findViewById<ImageView>(R.id.productImage) as ImageView
     val txtPName= itemView.findViewById<View>(R.id.txtPName) as TextView
     val txtPDescription= itemView.findViewById<View>(R.id.txtPDescription) as TextView
     val txtPPrice= itemView.findViewById<View>(R.id.txtPPrice) as TextView
