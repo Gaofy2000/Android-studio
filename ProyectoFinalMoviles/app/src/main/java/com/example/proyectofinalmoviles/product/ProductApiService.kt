@@ -8,14 +8,14 @@ import retrofit2.http.Query
 interface ProductApiService {
 
     @GET("products/find")
-    suspend fun getAllProducts(@Header("Authorization") auth:String): Response<ResponseProduct>
+    suspend fun getAllProducts(@Header("Authorization") auth:String, @Query("page") page: Int = 0, @Query("size") size: Int = 5): Response<ResponseProduct>
 
     @GET("products/find")
-    suspend fun getAllProductsByName(@Header("Authorization") auth:String, @Query ("search") search:String):Response<ResponseProduct>
+    suspend fun getAllProductsByName(@Header("Authorization") auth:String, @Query ("search") search:String, @Query("page") page: Int = 0, @Query("size") size: Int = 5):Response<ResponseProduct>
 
     @GET("products/find")
-    suspend fun getAllProductsByCategory(@Header("Authorizatio") auth:String, @Query("cat") cat: Long):Response<ResponseProduct>
+    suspend fun getAllProductsByCategory(@Header("Authorizatio") auth:String, @Query("cat") cat: Long, @Query("page") page: Int = 0, @Query("size") size: Int = 5):Response<ResponseProduct>
 
     @GET("products/find")
-    suspend fun getAllProductsByAll(@Header("Authorization") auth:String, @Query("search") search: String, @Query("cat") cat: Long):Response<ResponseProduct>
+    suspend fun getAllProductsByAll(@Header("Authorization") auth:String, @Query("search") search: String, @Query("cat") cat: Long, @Query("page") page: Int = 0, @Query("size") size: Int = 5):Response<ResponseProduct>
 }

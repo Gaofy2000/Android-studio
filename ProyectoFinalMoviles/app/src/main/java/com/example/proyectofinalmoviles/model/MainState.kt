@@ -16,48 +16,44 @@ class MainState {
     var cadenaLogin="http://10.0.2.2:8000/api/v1/"
 
     //Productos
-    suspend fun returnAllProducts(auth:String): ResponseProduct {
+    suspend fun returnAllProducts(auth: String, page: Int = 0): ResponseProduct {
         val retrofit = Retrofit.Builder()
             .baseUrl(cadena)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
         val service = retrofit.create(ProductApiService::class.java)
 
-        return service.getAllProducts(auth).body() ?: ResponseProduct()
+        return service.getAllProducts(auth, page).body() ?: ResponseProduct()
     }
 
-    suspend fun returnAllProductsByName(auth:String, search: String): ResponseProduct{
+    suspend fun returnAllProductsByName(auth: String, search: String, page: Int = 0): ResponseProduct {
         val retrofit = Retrofit.Builder()
             .baseUrl(cadena)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
         val service = retrofit.create(ProductApiService::class.java)
 
-        return service.getAllProductsByName(auth, search).body() ?: ResponseProduct()
+        return service.getAllProductsByName(auth, search, page).body() ?: ResponseProduct()
     }
 
-    suspend fun returnAllProductsByCategory(auth:String, cat: Long): ResponseProduct{
+    suspend fun returnAllProductsByCategory(auth: String, cat: Long, page: Int = 0): ResponseProduct {
         val retrofit = Retrofit.Builder()
             .baseUrl(cadena)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
         val service = retrofit.create(ProductApiService::class.java)
 
-        return service.getAllProductsByCategory(auth, cat).body() ?: ResponseProduct()
+        return service.getAllProductsByCategory(auth, cat, page).body() ?: ResponseProduct()
     }
 
-    suspend fun returnAllProductsByAll(auth:String, search: String, cat: Long): ResponseProduct{
+    suspend fun returnAllProductsByAll(auth: String, search: String, cat: Long, page: Int = 0): ResponseProduct {
         val retrofit = Retrofit.Builder()
             .baseUrl(cadena)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
         val service = retrofit.create(ProductApiService::class.java)
 
-        return service.getAllProductsByAll(auth, search, cat).body() ?: ResponseProduct()
-    }
-
-    fun scrollProducts(responseProduct: ResponseProduct){
-        responseProduct.number += 1
+        return service.getAllProductsByAll(auth, search, cat, page).body() ?: ResponseProduct()
     }
 
     //Carrito
@@ -112,4 +108,3 @@ class MainState {
         return service
     }
 }
-
