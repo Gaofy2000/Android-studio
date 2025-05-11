@@ -37,8 +37,15 @@ class MenuActivity : AppCompatActivity() {
             )
             main.addDrawerListener(toggle)
             toggle.syncState()
+            val myFragmentManager: FragmentManager = supportFragmentManager
+            val myFragmentTransaction: FragmentTransaction =
+                myFragmentManager.beginTransaction()
+            val myFragment: WebFragment = WebFragment.newInstance("http://10.0.2.2:8000/")
+            myFragmentTransaction
+                .add(R.id.myLinearL, myFragment)
+                .commit()
             myNavigationView.setNavigationItemSelectedListener {
-                val myFragmentManager: FragmentManager = supportFragmentManager
+
                 if (it.itemId == R.id.menu_home) {
                     val myFragmentTransaction: FragmentTransaction =
                         myFragmentManager.beginTransaction()

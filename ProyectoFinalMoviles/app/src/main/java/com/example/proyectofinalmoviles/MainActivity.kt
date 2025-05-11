@@ -2,6 +2,7 @@ package com.example.proyectofinalmoviles
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -45,10 +46,12 @@ class MainActivity : AppCompatActivity() {
             }
             loginViewModel.loginResult.observe(this@MainActivity) { result ->
                 result.onSuccess {
+                    labelError.visibility= View.GONE
                     Toast.makeText(applicationContext, "Login exitoso", Toast.LENGTH_SHORT).show()
                     startActivity(Intent(applicationContext, MenuActivity::class.java))
                 }
                 result.onFailure { error ->
+                    labelError.visibility= View.VISIBLE
                     Toast.makeText(applicationContext, "Error: ${error.message}", Toast.LENGTH_SHORT).show()
                 }
             }

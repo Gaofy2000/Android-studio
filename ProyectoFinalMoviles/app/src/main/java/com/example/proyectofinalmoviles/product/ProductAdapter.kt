@@ -37,7 +37,7 @@ class ProductAdapter(private var dataSet: ResponseProduct) : RecyclerView.Adapte
                 Glide.with(myContexto).load(urlImage).into(holder.productImage)
         */
 
-        Glide.with(myContexto).load("https://upload.wikimedia.org/wikibooks/en/c/c2/Charmander_RB.jpg").into(holder.productImage)
+        Glide.with(myContexto).load(urlImage).into(holder.productImage)
         holder.txtPName.text = product.name
         holder.txtPPrice.text = product.price.toString()
         holder.txtPDescription.text = product.description
@@ -71,10 +71,5 @@ class ProductAdapter(private var dataSet: ResponseProduct) : RecyclerView.Adapte
             }
             myContexto.startActivity(intent)
         }
-    }
-
-    fun updateData(newData: ResponseProduct) {
-        this.dataSet = newData
-        notifyDataSetChanged()
     }
 }

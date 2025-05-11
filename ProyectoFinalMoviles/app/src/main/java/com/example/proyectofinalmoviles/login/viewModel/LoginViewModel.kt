@@ -32,8 +32,8 @@ class LoginViewModel :ViewModel(){
                         else-> _loginResult.postValue(Result.failure(RuntimeException("Error ${response.code()}: ${response.message()}")))
                     }
                 }
-            }catch (e: Exception){
-
+            }catch (e: Exception) {
+                _loginResult.postValue(Result.failure(e))
             }
         }
     }
