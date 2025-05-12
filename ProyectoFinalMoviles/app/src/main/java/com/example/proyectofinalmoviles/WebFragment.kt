@@ -34,8 +34,8 @@ class WebFragment : Fragment() {
     ): View? {
         val myView = inflater.inflate(R.layout.fragment_web, container, false)
         var myWebView = myView.findViewById<WebView>(R.id.web_view)
-        myWebView.settings.javaScriptEnabled=true
         myWebView.webViewClient= WebViewClient()
+        myWebView.settings.javaScriptEnabled=true
         myWebView.loadUrl(url!!)
         // Inflate the layout for this fragment
         return myView

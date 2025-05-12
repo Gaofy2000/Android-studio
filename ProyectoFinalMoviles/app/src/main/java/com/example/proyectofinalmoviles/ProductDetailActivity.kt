@@ -1,6 +1,7 @@
 package com.example.proyectofinalmoviles
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
@@ -61,10 +62,18 @@ class ProductDetailActivity : AppCompatActivity() {
             Glide.with(this@ProductDetailActivity).load(urlImage).into(imgDetailProduct)
 
             when (productCategory) {
-                1 -> txtDetailProductCategory.text = "Carta"
-                2 -> txtDetailProductCategory.text = "Sobre"
-                3 -> txtDetailProductCategory.text = "Caja"
-                else -> txtDetailProductCategory.text = "Otro"
+                1 -> {
+                    txtDetailProductCategory.text = "Carta"
+                }
+                2 -> {
+                    txtDetailProductCategory.text = "Sobre"
+                }
+                3 -> {
+                    txtDetailProductCategory.text = "Caja"
+                }
+                else -> {
+                    txtDetailProductCategory.text = "Otro"
+                }
             }
 
             txtQuantity.text = "1"
@@ -92,9 +101,8 @@ class ProductDetailActivity : AppCompatActivity() {
         }
 
         viewModel.addToCartResult.observe(this) { result ->
-            if (result != null) {
+            if (result.totalCartQuantity > 0) {
                 Toast.makeText(this, "Producto añadido al carrito", Toast.LENGTH_SHORT).show()
-                finish()
             } else {
                 Toast.makeText(this, "Stock insuficiente", Toast.LENGTH_SHORT).show()
             }

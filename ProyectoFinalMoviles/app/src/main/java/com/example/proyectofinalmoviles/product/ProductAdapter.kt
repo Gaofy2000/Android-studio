@@ -46,15 +46,12 @@ class ProductAdapter(private var dataSet: ResponseProduct) : RecyclerView.Adapte
             1 -> {
                 holder.txtPCategory.text = "Carta"
             }
-
             2 -> {
                 holder.txtPCategory.text = "Sobre"
             }
-
             3 -> {
                 holder.txtPCategory.text = "Caja"
             }
-
             else -> {
                 holder.txtPCategory.text = "Otro"
             }

@@ -25,10 +25,8 @@ class ProductFragment : Fragment() {
     private val viewModel: ProductViewModel by viewModels()
     private lateinit var myAdapter: ProductAdapter
     private lateinit var layoutManager: LinearLayoutManager
-    private var firstLoad = true
     private val allProducts = mutableListOf<Product>()
     private var currentPage=0
-    private var lastVisibleItemPosition = 0
     private var totalElemnts=0
     private var totalItemsCount= allProducts.size
 
@@ -76,10 +74,6 @@ class ProductFragment : Fragment() {
 
             viewModel.datos.observe(viewLifecycleOwner, Observer {response ->
                 totalElemnts=response.totalElements
-                if (firstLoad) {
-                    firstLoad = false
-                    return@Observer
-                }
 
                 if (response.pageable.pageNumber == 0) {
                     allProducts.clear()
@@ -93,8 +87,6 @@ class ProductFragment : Fragment() {
                     content = allProducts.toList(),
                     numberOfElements = allProducts.size,
                 )
-
-                lastVisibleItemPosition = layoutManager.findLastVisibleItemPosition()
 
                 myAdapter = ProductAdapter(accumulatedResponse)
                 rvProducts.adapter = myAdapter
